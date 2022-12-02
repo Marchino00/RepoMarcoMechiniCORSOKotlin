@@ -8,12 +8,10 @@ fun main(args: Array<String>) {
 
     // Inizializzo le varibili
     var option: Int
-    var Option: String
     var menu: Boolean = true
     var menu2: Boolean = true
-    var arraylist = ArrayList<String>()
+    var ToDo : ArrayList<String> = ArrayList()
     var Conferma = true
-    var Conferma2 =true
     var i = 0
 
 
@@ -40,13 +38,13 @@ fun main(args: Array<String>) {
                 option = readLine()!!.toInt()
 
                 if (option == 1){
-                    arraylist.add(Task) // Effettivo inserimento della task nell'array
+                    ToDo.add(Task) // Effettivo inserimento della task nell'array
                     Conferma = false
                 } else if (option == 2){
                     println("Inserisci task corretta")
                     val Task = readLine()!!.toString()
                     println("La task che hai inserito è: $Task")
-                    arraylist.add(Task) // Effettivo inserimento della task nell'array
+                    ToDo.add(Task) // Effettivo inserimento della task nell'array
                     Conferma = false
                 }
 
@@ -60,6 +58,7 @@ fun main(args: Array<String>) {
                 println("Inserire Task (1)")
                 println("Stampare Task (2)")
                 println("Eliminare Task (3)")
+                println("Completa Task")
                 println("Esci (4)")
                 option = readLine()!!.toInt()
                 println("-----------------------------------")
@@ -79,13 +78,13 @@ fun main(args: Array<String>) {
                         option = readLine()!!.toInt()
 
                         if (option == 1){
-                            arraylist.add(Task)
+                            ToDo.add(Task)
                             Conferma2 = false
                         } else if (option == 2){
                             println("Inserisci task corretta")
                             val Task = readLine()!!.toString()
                             println("La task che hai inserito è: $Task")
-                            arraylist.add(Task)
+                            ToDo.add(Task)
                             Conferma2 = false
                         }
 
@@ -96,7 +95,7 @@ fun main(args: Array<String>) {
                     //stampa array completo
 
                     println("Le task che hai inserito sono:")
-                    for (item in arraylist){
+                    for (item in ToDo){
                         println(item)
                     }
 
@@ -104,47 +103,106 @@ fun main(args: Array<String>) {
                 } else if (option == 3) {
 
                     // elimina task dall'array
-                    for (item in arraylist){
-                        println(item+" "+i)
+                    for (item in ToDo) {
+                        println(item + " " + i)
                         i++
-                        println("La task numero: " +i+ " è stata rimossa")
-                        println("-----------------------------------")
-                        println("Vuoi vedre la lista aggiornata?")
-                        println("Si (1)")
-                        println("No (2)")
-                        option = readLine()!!.toInt()
-                        println("-----------------------------------")
-                        if (option == 1){
-
-                            println("Le task che hai inserito sono:")
-                            for (item in arraylist){
-                                println(item)
-                            }
-                        }
-
-
                     }
 
                     println("Quale task vuoi rimuovere? (Usa i numeri accanto alla task!!)")
-
-                    var Remove : Int = readLine()!!.toInt()
-                    Remove = Remove - 1
-                    arraylist.removeAt(Remove)
                     i = 0
 
-                } else if (option == 4){
-                    println("Sei uscito")
-                    menu2 = false
+                    var Remove : Int = readLine()!!.toInt()
+
+                    ToDo.removeAt(Remove)
+                    println("La task numero: " +i+ " è stata rimossa")
+                    println("-----------------------------------")
+                    println("Vuoi vedre la lista aggiornata?")
+                    println("Si (1)")
+                    println("No (2)")
+                    option = readLine()!!.toInt()
+                    println("-----------------------------------")
+                    if (option == 1){
+
+                        println("Le task che hai inserito sono:")
+                        for (item in ToDo){
+                            println(item)
+                        }
+                    }
+
+                }else if (option == 4) {
+
+                    // Completa task dall'array
+                    for (item in ToDo) {
+                        println(item + " " + i)
+                        i++
+                    }
+
+                    println("Quale task hai completato? (Usa i numeri accanto alla task!!)")
+                    i = 0
+
+                    var Remove : Int = readLine()!!.toInt()
+
+                    ToDo.removeAt(Remove)
+                    println("La task numero: " +i+ " è stata completata")
+                    println("-----------------------------------")
+                    println("Vuoi vedre la lista aggiornata?")
+                    println("Si (1)")
+                    println("No (2)")
+                    option = readLine()!!.toInt()
+                    println("-----------------------------------")
+                    if (option == 1){
+
+                        println("Le task che hai inserito sono:")
+                        for (item in ToDo){
+                            println(item)
+                        }
+                    }
+
+                }else if (option == 5){
+                    println("Sei sicuro di voler uscire?")
+                    println("Si (1)")
+                    println("No (2)")
+                    option = readLine()!!.toInt()
+
+                    if (option == 1){
+                        println("Sei uscito")
+                        menu2 = false
+
+                    } else if (option == 2) {
+                        menu = true
+
+                    } else {
+                        menu = true
+                        println("Valore inserito non corretto")
+                    }
+
+
                 } else {
                     println("Valore inserito non corretto")
 
                 }
             }
 
-        } else {
-            println("Sei Uscito")
-            menu == false
+        } else if (option == 2) {
+            println("-----------------------------------")
+            println("Sei sicuro di voler uscire?")
+            println("Si (1)")
+            println("No (2)")
+            option = readLine()!!.toInt()
 
+            if (option == 1){
+                println("Sei Uscito")
+                menu = true
+
+            } else if (option == 2) {
+                menu = false
+            } else {
+                menu = false
+                println("Valore inserito non corretto")
+            }
+
+        } else {
+            println("Valore inserito non corretto")
         }
 
 
