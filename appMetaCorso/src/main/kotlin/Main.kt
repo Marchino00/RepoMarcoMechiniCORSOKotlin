@@ -58,8 +58,8 @@ fun main(args: Array<String>) {
                 println("Inserire Task (1)")
                 println("Stampare Task (2)")
                 println("Eliminare Task (3)")
-                println("Completa Task")
-                println("Esci (4)")
+                println("Completa Task (4)")
+                println("Esci (5)")
                 option = readLine()!!.toInt()
                 println("-----------------------------------")
 
